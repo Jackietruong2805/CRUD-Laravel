@@ -11,26 +11,10 @@
     <div class="main_content pt-3">
         <div class="container">
             <div class="row">
-                {{-- @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif --}}
-                
-                @if (session()->has('success'))
-                    <div class="alert alert-success">
-                        {{session('success')}}
-                    </div>
-                @endif
-                
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
-                          Add Student
+                              Edit Student
                         </div>
                         <div class="card-body">
                             <form action="{{route('store')}}" method="post">

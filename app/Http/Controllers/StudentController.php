@@ -8,7 +8,8 @@ use App\Models\Student;
 class StudentController extends Controller
 {
     public function index(){
-        return view('home');
+        $students = Student::get();
+        return view('home', compact('students'));
     }
     public function store(Request $request){
         // Validation
