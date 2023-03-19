@@ -36,6 +36,13 @@
                             <form action="{{route('store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
+                                    <label for="photo" class="form-label">Photo Name</label>
+                                    <input type="file" class="form-control" name="photo">
+                                    @error('photo')
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
                                     <label for="" class="form-label">Student Name</label>
                                     <input type="text" class="form-control" name="name" value="{{old('name')}}">
                                     @error('name')
@@ -67,6 +74,7 @@
                                 <thead>
                                   <tr>
                                     <th scope="col">Serial</th>
+                                    <th scope="col">Photo</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Action</th>
@@ -76,6 +84,9 @@
                                     @foreach ($students as $student)
                                         <tr>
                                             <th scope="row">{{$loop->iteration}}</th>
+                                            <td>
+                                                <img src="{{asset('uploads/'.$student->photo)}}" style="object-fit: cover; max-width: 200px"/>
+                                            </td>
                                             <td>{{$student->name}}</td>
                                             <td>{{$student->email}}</td>
                                             <td>
