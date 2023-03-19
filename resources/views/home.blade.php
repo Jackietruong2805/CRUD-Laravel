@@ -33,7 +33,7 @@
                           Add Student
                         </div>
                         <div class="card-body">
-                            <form action="{{route('store')}}" method="post">
+                            <form action="{{route('store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="" class="form-label">Student Name</label>
@@ -79,8 +79,8 @@
                                             <td>{{$student->name}}</td>
                                             <td>{{$student->email}}</td>
                                             <td>
-                                                <a href="" class="btn btn-info">Edit</a>
-                                                <a href="" class="btn btn-danger" onClick="return confirm('Are you sure want to delete this student?')">Delete</a>
+                                                <a href="{{route('edit', $student->id)}}" class="btn btn-info">Edit</a>
+                                                <a href="{{route('delete', $student->id)}}" class="btn btn-danger" onClick="return confirm('Are you sure want to delete this student?')">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

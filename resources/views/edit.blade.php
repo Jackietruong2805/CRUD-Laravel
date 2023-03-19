@@ -17,62 +17,31 @@
                               Edit Student
                         </div>
                         <div class="card-body">
-                            <form action="{{route('store')}}" method="post">
+                            <form action="{{route('update', $student->id)}}" method="post">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="" class="form-label">Student Name</label>
-                                    <input type="text" class="form-control" name="name" value="{{old('name')}}">
+                                    <input type="text" class="form-control" name="name" value="{{$student->name}}">
                                     @error('name')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Student Email</label>
-                                    <input type="text" class="form-control" name="email" value="{{old('email')}}">
+                                    <input type="text" class="form-control" name="email" value="{{$student->email}}">
                                     @error('email')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
                                     {{-- <input type="submit" value="Submit" class="btn btn-primary"/> --}}
-                                    <button  type="submit" class="btn btn-success">Submit</button>
+                                    <button  type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">
-                          All Students
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-bordered">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Serial</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Action</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($students as $student)
-                                        <tr>
-                                            <th scope="row">{{$loop->iteration}}</th>
-                                            <td>{{$student->name}}</td>
-                                            <td>{{$student->email}}</td>
-                                            <td>
-                                                <a href="" class="btn btn-info">Edit</a>
-                                                <a href="" class="btn btn-danger" onClick="return confirm('Are you sure want to delete this student?')">Delete</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                              </table>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
