@@ -73,6 +73,9 @@ class StudentController extends Controller
 
     public function delete($id){
         $student = Student::where('id', $id)->first();
+        if(file_exists(public_path('uploads/'.$student->photo)) AND !empty($student->photo)){
+            unlink(public_path('uploads/'.$student->photo));
+        };
         $student->delete();
         return redirect()->back()->with('success', "Data is deleted successfully");
     }
