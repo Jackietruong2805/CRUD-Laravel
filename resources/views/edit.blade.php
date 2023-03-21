@@ -17,8 +17,21 @@
                               Edit Student
                         </div>
                         <div class="card-body">
-                            <form action="{{route('update', $student->id)}}" method="post">
+                            <form action="{{route('update', $student->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                <div class="mb-3">
+                                    <label for="">Existing Photo</label>
+                                    <div style="max-width: 200px">
+                                        <img style="width: 100%" src="{{asset('uploads/'.$student->photo)}}" alt='{{$student->photo}}'/>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Upload Photo</label>
+                                    <input type="file" name="photo" class="form-control">
+                                    @error('photo')
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Student Name</label>
                                     <input type="text" class="form-control" name="name" value="{{$student->name}}">
